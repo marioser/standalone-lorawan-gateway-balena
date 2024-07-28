@@ -59,7 +59,7 @@ services:
 
     ports:
     
-        - "80:1885"
+        - "88:1885"
         - "443:8885"
     
         - "1881:1881"
@@ -125,8 +125,6 @@ services:
     labels:
         io.balena.features.dbus: '1'
         io.balena.features.firmware: '1'
-    ports:
-        - 88:80
     cap_add:
         - NET_ADMIN
     environment:
