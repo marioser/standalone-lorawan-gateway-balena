@@ -75,6 +75,7 @@ services:
         - "8884:8884"
         - "8885:8885"
         - "8887:8887"
+        - "5432:5432"
     
         - "1700:1700/udp"
     
@@ -115,20 +116,20 @@ services:
         io.balena.features.supervisor-api: '1'
         io.balena.features.balena-api: '1'
 
-  # ------------------------------------------------------------------------------------
+ # ------------------------------------------------------------------------------------
   # BalenaLabs WiFi-Connect
   # ------------------------------------------------------------------------------------
-  wifi-connect:
-    image: balenablocks/wifi-connect:rpi
-    container_name: wifi-connect
-    network_mode: "host"
-    labels:
-        io.balena.features.dbus: '1'
-        io.balena.features.firmware: '1'
-    cap_add:
-        - NET_ADMIN
-    environment:
-        DBUS_SYSTEM_BUS_ADDRESS: "unix:path=/host/run/dbus/system_bus_socket"
+ # wifi-connect:
+ #   image: balenablocks/wifi-connect:rpi
+ #   container_name: wifi-connect
+ #   network_mode: "host"
+ #   labels:
+ #       io.balena.features.dbus: '1'
+ #       io.balena.features.firmware: '1'
+ #   cap_add:
+ #       - NET_ADMIN
+ #   environment:
+ #       DBUS_SYSTEM_BUS_ADDRESS: "unix:path=/host/run/dbus/system_bus_socket"
 
   # ------------------------------------------------------------------------------------
   # Node-RED
@@ -162,22 +163,22 @@ services:
   # ------------------------------------------------------------------------------------
   # Influxdb
   # ------------------------------------------------------------------------------------
-  influxdb:
-    image: influxdb:1.7.11
-    container_name: influxdb
-    restart: unless-stopped
-    volumes:
-        - influxdb-data:/var/lib/influxdb
-        - influxdb-etc:/etc/influxdb
+#  influxdb:
+#    image: influxdb:1.7.11
+#    container_name: influxdb
+#    restart: unless-stopped
+#    volumes:
+#        - influxdb-data:/var/lib/influxdb
+#        - influxdb-etc:/etc/influxdb
 
   # ------------------------------------------------------------------------------------
   # Grafana
   # ------------------------------------------------------------------------------------
-  grafana:
-    image: balenablocks/dashboard
-    container_name: grafana
-    restart: unless-stopped
-    ports:
-        - 3000:80
-    volumes:
-        - "grafana-data:/data"
+#  grafana:
+#    image: balenablocks/dashboard
+#    container_name: grafana
+#    restart: unless-stopped
+#    ports:
+#        - 3000:80
+#    volumes:
+#        - "grafana-data:/data"
